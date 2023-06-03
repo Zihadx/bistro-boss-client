@@ -1,14 +1,20 @@
 import { useContext } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
+import useCart from "../../../Hooks/useCart";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+
+  const [carts] = useCart();
+
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.log(error));
   };
+
   const navItems = (
     <>
       <li>
@@ -18,9 +24,21 @@ const NavBar = () => {
         <Link to="/menu">Our Menu</Link>
       </li>
       <li>
-        <Link to="/order/salad">Order Food</Link>
+        <Link to="/order/salads">Order Food</Link>
       </li>
-      {/* <li><Link to='/login'>Login</Link></li> */}
+      <li>
+        <Link to="/secret">Secret</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/mycart" className="indicator bg-slate-700">
+          <span className=" badge indicator-item badge-primary">
+            +{carts?.length || 0}
+          </span>
+          <div className="place-items-center text-xl">
+            <FaShoppingCart />
+          </div>
+        </Link>
+      </li>
     </>
   );
   return (
@@ -66,6 +84,7 @@ const NavBar = () => {
         <div className="navbar-end">
           {user ? (
             <>
+              <span className="font-bold">{user?.displayName}</span>
               <button
                 onClick={handleLogOut}
                 className="btn btn-ghost font-bold uppercase"
