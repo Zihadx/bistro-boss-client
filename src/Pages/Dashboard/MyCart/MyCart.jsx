@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import useCart from "../../../Hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [carts, refetch] = useCart();
@@ -9,7 +10,7 @@ const MyCart = () => {
   const total = carts.reduce((sum, item) => item.price + sum, 0);
 
   const handleDelete = (item) => {
-    console.log(item)
+    console.log(item);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -22,10 +23,10 @@ const MyCart = () => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/carts/${item._id}`, {
           method: "DELETE",
-        //   headers: {
-        //     'content-type': 'application/jon'
-        //   },
-        //   body: JSON.stringify()
+          //   headers: {
+          //     'content-type': 'application/jon'
+          //   },
+          //   body: JSON.stringify()
         })
           .then((res) => res.json())
           .then((data) => {
@@ -46,10 +47,17 @@ const MyCart = () => {
       <div className="uppercase  h-[80px] font-semibold flex justify-evenly items-center gap-8">
         <h3 className="text-3xl">Total Items: {carts.length}</h3>
         <h3 className="text-3xl">Total Prices: ${total}</h3>
-        <button className="btn btn-warning btn-sm">Pay Now</button>
+        <Link to="/dashboard/payment">
+          <button
+            className="btn btn-ghost bg-[#D1A054] text-white
+         hover:text-black btn-sm mt-8"
+          >
+            Pay
+          </button>
+        </Link>
       </div>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
             <tr>

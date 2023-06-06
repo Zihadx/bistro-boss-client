@@ -21,19 +21,19 @@ const Dashboard = () => {
   return (
     <div className="drawer drawer-mobile h-full">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex  flex-col items-center justify-center">
+      <div className="drawer-content">
         {/* Page content here */}
-        <Outlet></Outlet>
         <label
           htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden"
+          className="btn btn-primary bt-sm drawer-button lg:hidden flex justify-center items-center"
         >
           Open drawer
         </label>
+        <Outlet></Outlet>
       </div>
       <div className="drawer-side h-full">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full bg-[#D1A054] uppercase font-semibold">
+        <ul className="menu p-4 w-80 bg-[#D1A054] uppercase font-semibold">
           {/* Sidebar content here */}
 
           {isAdmin ? (
@@ -50,7 +50,7 @@ const Dashboard = () => {
               </li>
 
               <li>
-                <NavLink to="/dashboard/history">
+                <NavLink to="/dashboard/manageItem">
                   <FaWallet></FaWallet>Manage Items
                 </NavLink>
               </li>
