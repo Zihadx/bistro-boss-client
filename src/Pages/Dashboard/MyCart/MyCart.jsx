@@ -41,7 +41,7 @@ const MyCart = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <Helmet>
-        <title>Bistro Boss | my Cart</title>
+        <title>Bistro Boss | My Cart</title>
       </Helmet>
       <div className="uppercase  h-[80px] font-semibold flex justify-evenly items-center gap-8">
         <h3 className="text-3xl">Total Items: {carts.length}</h3>

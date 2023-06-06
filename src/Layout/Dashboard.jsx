@@ -9,12 +9,14 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import useCart from "../Hooks/useCart";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
   const [carts] = useCart();
 
   // TODO: load data from server to dynamic isAdmin based on Data
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="drawer drawer-mobile h-full">
@@ -42,7 +44,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/reservations">
+                <NavLink to="/dashboard/addItem">
                   <FaUtensils></FaUtensils> Add Items
                 </NavLink>
               </li>
