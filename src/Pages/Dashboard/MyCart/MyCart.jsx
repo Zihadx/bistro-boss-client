@@ -40,7 +40,7 @@ const MyCart = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center">
+    <div className="w-full md:ps-12">
       <Helmet>
         <title>Bistro Boss | My Cart</title>
       </Helmet>

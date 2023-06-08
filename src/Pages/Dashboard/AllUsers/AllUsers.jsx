@@ -33,16 +33,16 @@ const AllUsers = () => {
 
   const handleDelete = (user) => {};
   return (
-    <div>
+    <div className="w-full mx-auto">
       <Helmet>
         <title>Bistro Boss | All Users</title>
       </Helmet>
-      <h3 className="text-3xl font-semibold my-4">
+      <h3 className="text-3xl font-semibold my-4 text-center">
         Total Users:{users.length}
       </h3>
 
-      <div className="overflow-x-auto">
-        <table className="table table-zebra">
+      <div className="overflow-x-auto md:ps-12">
+        <table className="table table-zebra w-full">
           {/* head */}
           <thead>
             <tr>
